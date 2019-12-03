@@ -17,9 +17,6 @@ public class Polygon extends Deq implements Figure {
         p = R2Point.dist(a, b) + R2Point.dist(b, c) + R2Point.dist(c, a);
         s = Math.abs(R2Point.area(a, b, c));
     }
-    public Polygon(R2Point point1, R2Point point2)
-    {
-    }
     public double perimeter() {
         return p;
     }
@@ -38,15 +35,22 @@ public class Polygon extends Deq implements Figure {
             grow(back(), front(), t);
 // Удаляем все освещенные ребра из начала дека.
             for (x = popFront(); t.light(x, front()); x = popFront())
+            {
+                R2Point.decalc(x);
                 grow(x, front(), t);
+            }
             pushFront(x);
 // Удаляем все освещенные ребра из конца дека.
             for (x = popBack(); t.light(back(), x); x = popBack())
+            {
+                R2Point.decalc(x);
                 grow(back(), x, t);
+            }
             pushBack(x);
 // Завершаем обработку добавляемой точки.
             p += R2Point.dist(back(), t) + R2Point.dist(t, front());
             pushFront(t);
+            R2Point.calc(t);
         }
         return this;
     }
@@ -58,10 +62,10 @@ public class Polygon extends Deq implements Figure {
             pushBack(popFront());
         }
     }
-    public int calc(Rectangle Rect)
+    public int calc()
     {
-        double x1 = Rect.point1.getX(); double y1 = Rect.point1.getY();
-        double x2 = Rect.point2.getX(); double y2 = Rect.point2.getY();
+        /*double x1 = Rectangle.point1.getX(); double y1 = Rectangle.point1.getY();
+        double x2 = Rectangle.point2.getX(); double y2 = Rectangle.point2.getY();
         R2Point points[] = new R2Point[] { new R2Point(x1,y1), new R2Point(x2,y1), new R2Point(x2,y2), new R2Point(x1,y2), new R2Point(x1,y1) };
         int k[] = new int[] { 0, 0, 0, 0 };
         for (int i = 0; i < length(); i++)
@@ -78,6 +82,7 @@ public class Polygon extends Deq implements Figure {
             }
             pushBack(popFront());
         }
-        return k[0] + k[1] + k[2] + k[3];
+        return k[0] + k[1] + k[2] + k[3];*/
+        return Rectangle.KOL;
     }
 }

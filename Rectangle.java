@@ -4,7 +4,8 @@ public class Rectangle
 {
     private Figure fig;
     public static Polygon P;
-    public R2Point point1,point2;
+    public static R2Point point1,point2;
+    public static int KOL = -8;
     public Rectangle(R2Point point1, R2Point point2)
     {
         fig = new Void();

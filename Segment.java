@@ -13,20 +13,35 @@ public class Segment implements Figure {
     }
     public Figure add(R2Point r) {
         if (R2Point.isTriangle(p, q, r))
+        {
+            R2Point.calc(r);
             return new Polygon(p, q, r);
-        if (q.inside(p, r)) q = r;
-        if (p.inside(r, q)) p = r;
+        }
+        if (q.inside(p, r))
+        {
+            R2Point.decalc(q);
+            q = r;
+            R2Point.calc(q);
+            return this;
+        }
+        if (p.inside(r, q))
+        {
+            R2Point.decalc(p);
+            p = r;
+            R2Point.calc(p);
+            return this;
+        }
         return this;
     }
     public void draw(Graphics g)
     {
         g.drawLine((int)p.getX(),(int)p.getY(),(int)q.getX(),(int)q.getY());
     }
-    public int calc(Rectangle Rect)
+    public int calc()
     {
-        int k[] = new int[] { 0, 0, 0, 0 };
-        double x1 = Rect.point1.getX(); double y1 = Rect.point1.getY();
-        double x2 = Rect.point2.getX(); double y2 = Rect.point2.getY();
+        /*int k[] = new int[] { 0, 0, 0, 0 };
+        double x1 = Rectangle.point1.getX(); double y1 = Rectangle.point1.getY();
+        double x2 = Rectangle.point2.getX(); double y2 = Rectangle.point2.getY();
         R2Point points[] = new R2Point[] { new R2Point(x1,y1), new R2Point(x2,y1), new R2Point(x2,y2), new R2Point(x1,y2), new R2Point(x1,y1) };
         R2Point points1[] = new R2Point[] { p, p, q, q };
         for (int j = 0; j < 4; j++)
@@ -39,6 +54,7 @@ public class Segment implements Figure {
                 }
             }
         }
-        return k[0] + k[1]+ k[2] + k[3];
+        return k[0] + k[1]+ k[2] + k[3];*/
+        return Rectangle.KOL;
     }
 }

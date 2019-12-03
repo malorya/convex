@@ -18,8 +18,8 @@ public class Convex {
     {
         fig.draw(g);
     }
-    public int calc(Rectangle Rect)
+    public int calc()
     {
-        return fig.calc(Rect);
+        return fig.calc();
     }
 }

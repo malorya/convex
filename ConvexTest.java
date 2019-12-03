@@ -6,18 +6,20 @@ public class ConvexTest {
         R2Point point1 = new R2Point();
         R2Point point2 = new R2Point();
         Rectangle Rect = new Rectangle(point1, point2);
+        Window w = new Window(convex, Rect);
         System.out.println("Введите точки для выпуклой оболочки");
         while (true) {
             try {
                 R2Point point = new R2Point();
                 convex.add(point);
-                System.out.println("S = " + convex.area() + " , P = " + convex.perimeter()+ " Сумма точек = " + convex.calc(Rect));
+                w.paint();
+                System.out.println("S = " + convex.area() + " , P = " + convex.perimeter()+ " Сумма точек = " + convex.calc());
             }
             catch (Exception ex)
             {
                 break;
             }
         }
-        Window w = new Window(convex, Rect);
+
     }
 }

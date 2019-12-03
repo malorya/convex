@@ -5,5 +5,5 @@ public interface Figure {
     public double area();
     public Figure add(R2Point p);
     public void draw(Graphics g);
-    public int calc(Rectangle Rect);
+    public int calc();
 }

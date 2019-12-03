@@ -36,4 +36,42 @@ public class R2Point {
     public double getY() {
         return y;
     }
+    public static int calc(R2Point point)
+    {
+        int k[] = new int[] { 0, 0, 0, 0 };
+        double x1 = Rectangle.point1.getX(); double y1 = Rectangle.point1.getY();
+        double x2 = Rectangle.point2.getX(); double y2 = Rectangle.point2.getY();
+        R2Point points[] = new R2Point[] { new R2Point(x1,y1), new R2Point(x2,y1), new R2Point(x2,y2), new R2Point(x1,y2), new R2Point(x1,y1) };
+        for (int j = 0; j < 4; j++)
+        {
+            if ((R2Point.area(points[j], points[j+1], point) == 0) && point.inside(points[j], points[j+1]))
+            {
+                if (k[j] == 0)
+                {
+                    k[j]++;
+                }
+            }
+        }
+        Rectangle.KOL += k[0] + k[1]+ k[2] + k[3];
+        return Rectangle.KOL;
+    }
+    public static int decalc(R2Point point)
+    {
+        int k[] = new int[] { 0, 0, 0, 0 };
+        double x1 = Rectangle.point1.getX(); double y1 = Rectangle.point1.getY();
+        double x2 = Rectangle.point2.getX(); double y2 = Rectangle.point2.getY();
+        R2Point points[] = new R2Point[] { new R2Point(x1,y1), new R2Point(x2,y1), new R2Point(x2,y2), new R2Point(x1,y2), new R2Point(x1,y1) };
+        for (int j = 0; j < 4; j++)
+        {
+            if ((R2Point.area(points[j], points[j+1], point) == 0) && point.inside(points[j], points[j+1]))
+            {
+                if (k[j] == 0)
+                {
+                    k[j]++;
+                }
+            }
+        }
+        Rectangle.KOL -= k[0] + k[1]+ k[2] + k[3];
+        return Rectangle.KOL;
+    }
 }
