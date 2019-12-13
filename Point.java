@@ -22,7 +22,7 @@ public class Point implements Figure {
             return this;
         }
     }
-    public void draw(Graphics g)
+    public void draw(Graphics2D g)
     {
         g.fillOval((int)p.getX(), (int)p.getY(), 1, 1);
     }

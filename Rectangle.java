@@ -19,7 +19,7 @@ public class Rectangle
         fig = fig.add(point4);
         P = (Polygon)fig;
     }
-    public void draw(Graphics g)
+    public void draw(Graphics2D g)
     {
         P.draw(g);
     }

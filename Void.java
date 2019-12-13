@@ -12,7 +12,7 @@ public class Void implements Figure {
         R2Point.calc(p);
         return new Point(p);
     }
-    public void draw(Graphics g)
+    public void draw(Graphics2D g)
     {
 
     }
